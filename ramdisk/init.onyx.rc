@@ -29,7 +29,7 @@ on init
     symlink /sdcard /storage/sdcard0
 
 # Pass required symbols for OOS Blobs
-export LD_PREDOAD "/system/vendor/lib/libqomx_jpegenc.so:/system/bin/rild:libOP.so:/system/lib/libril.so:libOP.so"
+export LD_PREDOAD "/system/lib/libOP.so /system/lib/libopx_cam.so"
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB

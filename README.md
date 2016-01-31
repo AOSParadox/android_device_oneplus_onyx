@@ -1,4 +1,4 @@
 Device tree for One+X
 
-Copyright 2015, The CyanogenMod Project
+Copyright 2016, The AOSParadox Project
 

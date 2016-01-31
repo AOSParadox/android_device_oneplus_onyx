@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2016 The AOSParadox Project
+# Copyright (C) 2016 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,18 +11,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-BOARD_KERNEL_SEPARATED_DT := true
-KERNEL_DEFCONFIG := onyx_defconfig
-KERNEL_DIR := kernel
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
--include $(TOP)/$(KERNEL_DIR)/AndroidKernel.mk
+# Inherit from onyx device
+$(call inherit-product, device/oneplus/onyx/onyx.mk)
 
-# device.mk doesn't know about us, and we can't PRODUCT_COPY_FILES here.
-# So cp will do.
-.PHONY: $(PRODUCT_OUT)/kernel
-$(PRODUCT_OUT)/kernel: $(TARGET_PREBUILT_KERNEL)
-	cp $(TARGET_PREBUILT_KERNEL) $(PRODUCT_OUT)/kernel
+PRODUCT_NAME := full_onyx
+PRODUCT_DEVICE := onyx
+PRODUCT_MANUFACTURER := OnePlus
+PRODUCT_MODEL := OnePlus X
 
-include device/qcom/msm8974/AndroidBoard.mk
+PRODUCT_GMS_CLIENTID_BASE := android-oneplus

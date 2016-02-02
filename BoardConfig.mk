@@ -26,9 +26,6 @@ TARGET_NO_BOOTLOADER := true
 # Assert
 TARGET_OTA_ASSERT_DEVICE := onyx,E1003,ONE
 
-# Clang
-USE_CLANG_PLATFORM_BUILD := true
-
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := device/oneplus/onyx/mkbootimg.mk
 KERNEL_DEFCONFIG := cm_onyx_defconfig

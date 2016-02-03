@@ -54,10 +54,6 @@ PRODUCT_PACKAGES += \
     com.dsi.ant.antradio_library \
     libantradio
 
-# Camera compatibility layer
-PRODUCT_PACKAGES += \
-    libopx_cam
-
 # dtbTool
 PRODUCT_PACKAGES += \
     dtbToolonyx

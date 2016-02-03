@@ -1,1 +1,6 @@
 allow init socket_device:sock_file create;
+allow init self:netlink_kobject_uevent_socket create;
+allow init self:socket create;
+allow init smem_log_device:chr_file write;
+allow init sysfs_mpdecision:file getattr;
+allow init thermal_device:chr_file write;

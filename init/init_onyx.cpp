@@ -43,10 +43,6 @@ void init_msm_properties(unsigned long msm_id,unsigned long msm_ver, char *board
     UNUSED(msm_ver);
     UNUSED(board_type);
 
-    rc = property_get("ro.cm.device", device);
-    if (!rc || !ISMATCH(device, "onyx"))
-        return;
-
     property_get("ro.boot.rf_version", rf_version);
 
     if (strstr(rf_version, "101")) {

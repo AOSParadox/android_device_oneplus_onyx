@@ -23,6 +23,6 @@ const char CameraParameters::KEY_APP_MASK[] = "app-mask";
 #define CAMERA_PARAMETERS_EXTRA_H \
     static const char WHITE_BALANCE_MANUAL_CCT[]; \
     static const char FOCUS_MODE_MANUAL_POSITION[]; \
-    static const char KEY_APP_MASK[]
+    static const char KEY_APP_MASK[];
 
 

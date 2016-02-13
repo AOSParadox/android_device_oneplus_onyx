@@ -4,3 +4,10 @@ allow init self:socket create;
 allow init smem_log_device:chr_file write;
 allow init sysfs_mpdecision:file getattr;
 allow init thermal_device:chr_file write;
+allow init qmuxd_socket:sock_file write;
+allow init self:socket ioctl;
+allow init thermal_device:chr_file ioctl;
+allow init qmuxd:unix_stream_socket connectto;
+allow init self:socket read;
+allow init smem_log_device:chr_file ioctl;
+

@@ -28,6 +28,9 @@ on init
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
+    # Support legacy paths
+    symlink /system/vendor/lib/egl /egl
+
 # Pass required symbols for OOS Blobs
 export LD_PREDOAD "/system/lib/libOP.so"
 

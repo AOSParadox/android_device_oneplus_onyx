@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-ifneq ($(filter onyx,$(TARGET_DEVICE)),)
+ifeq ($(TARGET_DEVICE),onyx)
 
 LOC_PATH := $(call my-dir)
 include $(call first-makefiles-under,$(LOC_PATH))

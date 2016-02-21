@@ -1,7 +1,7 @@
 # NV backup partitions
 /dev/block/platform/msm_sdcc\.1/by-name/oppodycnvbk     u:object_r:nvbackup_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/oppostanvbk     u:object_r:nvbackup_block_device:s0
-/dev/mem                                                u:object_r:nvbackup_block_device:s0
+/data/oemnvitems(/.*)?                                  u:object_r:nv_data_file:s0
 
 # Persist filesystem
 /dev/block/platform/msm_sdcc\.1/by-name/persist         u:object_r:persist_block_device:s0
@@ -20,7 +20,3 @@
 # Backlight
 /sys/class/leds/lcd-backlight/brightness                u:object_r:proc_touchpanel:s0
 
-# Thermal-engine
-/system/vendor/bin/thermal-engine                              u:object_r:thermal-engine_exec:s0
-
-/data/oemnvitems(/.*)?                                  u:object_r:nv_data_file:s0

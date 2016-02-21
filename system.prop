@@ -21,7 +21,6 @@ persist.radio.eons.enabled=false
 persist.radio.msim.stackid_0=0
 persist.radio.msim.stackid_1=1
 persist.radio.multisim.config=dsds
-persist.radio.multisim.config=dsds
 persist.radio.rat_on=combine
 persist.radio.ril_payload_on=0
 ro.data.large_tcp_window_size=true

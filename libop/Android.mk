@@ -1,4 +1,4 @@
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2016 The AOSParadox Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,11 +13,13 @@
 # limitations under the License.
 
 LOCAL_PATH := $(call my-dir)
-
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES := opx_cam.c opx_ril.c
-LOCAL_SHARED_LIBRARIES := libbinder
+LOCAL_SRC_FILES := \
+    opx_cam.c \
+    opx_ril.c
+
+LOCAL_SHARED_LIBRARIES := libutils libgui
 LOCAL_MODULE := libOP
 LOCAL_MODULE_TAGS := optional
 

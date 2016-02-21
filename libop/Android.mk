@@ -19,7 +19,7 @@ LOCAL_SRC_FILES := \
     opx_cam.c \
     opx_ril.c
 
-LOCAL_SHARED_LIBRARIES := libutils libgui liblog
+LOCAL_SHARED_LIBRARIES := libutils libgui liblog libbinder
 LOCAL_MODULE := libOP
 LOCAL_MODULE_TAGS := optional
 

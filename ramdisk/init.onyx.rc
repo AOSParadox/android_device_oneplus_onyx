@@ -31,8 +31,8 @@ on init
     # Support legacy paths
     symlink /system/vendor/lib/egl /egl
 
-# Pass required symbols for OOS Blobs
-export LD_PREDOAD "/system/lib/libOP.so:/system/lib/libopx_cam.so"
+    # Pass required symbols for OOS Blobs
+    export LD_PREDOAD "/system/lib/libOP.so"
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB

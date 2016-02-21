@@ -32,7 +32,7 @@ on init
     symlink /system/vendor/lib/egl /egl
 
     # Pass required symbols for OOS Blobs
-    export LD_PREDOAD "/system/lib/libOP.so"
+    export LD_PRELOAD "/system/lib/libOP.so"
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB

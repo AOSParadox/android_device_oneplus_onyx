@@ -17,10 +17,6 @@
 # Call the proprietary setup
 $(call inherit-product-if-exists, vendor/oneplus/onyx/onyx-vendor.mk)
 
-# CAF branch
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.par.branch=LA.BF.1.1.3-00110-8x74.0
-
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/oneplus/onyx/ramdisk,root)

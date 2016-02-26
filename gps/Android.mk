@@ -16,7 +16,6 @@
 
 ifeq ($(TARGET_DEVICE),onyx)
 
-LOC_PATH := $(call my-dir)
-include $(call first-makefiles-under,$(LOC_PATH))
+include $(call first-makefiles-under,$(call my-dir))
 
 endif

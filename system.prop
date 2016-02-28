@@ -6,26 +6,19 @@ audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
 av.offload.enable=true
 av.streaming.offload.enable=true
-persist.data.netmgrd.qos.enable=true
-persist.data.tcpackprio.enable=true
-persist.dpm.feature=7
-persist.dpm.nsrm.bkg.evt=3955
-persist.env.fastdorm.enabled=true
-persist.gps.qc_nlp_in_use=1
+drm.service.enabled=true
+persist.camera.cpp.duplication=false
+persist.data.qmi.adb_logmask=0
 persist.loc.nlp_name=com.qualcomm.location
-persist.radio.adb_log_lvl=0x18
-persist.radio.adb_log_on=1
-persist.radio.data_no_toggle=1
-persist.radio.disable_flexmap=1
-persist.radio.eons.enabled=false
-persist.radio.msim.stackid_0=0
-persist.radio.msim.stackid_1=1
 persist.radio.multisim.config=dsds
 persist.radio.rat_on=combine
-persist.radio.ril_payload_on=0
-ro.data.large_tcp_window_size=true
+ro.build.description=OnePlus
+ro.build.fingerprint=OnePlus/OnePlus/OnePlus:5.1.1/LMY47V/1441677661:user/release-keys
+ro.build.product=OnePlus
 ro.gps.agps_provider=1
+ro.pip.gated=0
 ro.prj_name=15055
+ro.product.device=OnePlus
 ro.qti.sdk.sensors.gestures=false
 ro.qti.sensors.amd=false
 ro.qti.sensors.bte=true
@@ -48,8 +41,6 @@ ro.qti.sensors.vmd=true
 ro.sf.lcd_density=480
 ro.telephony.ril.config=simactivation
 ro.vendor.extension_library=libqti-perfd-client.so
-wifi.interface=wlan0
-wifi.supplicant_scan_interval=15
 
 #
 # system.prop for msm8974
@@ -144,10 +135,13 @@ bluetooth.hfp.client=1
 #
 ro.bluetooth.alwaysbleon=true
 
+#Simulate sdcard on /data/media
+#
+persist.fuse_sdcard=true
+
 #
 #snapdragon value add features
 #
-ro.qc.sdk.audio.ssr=false
 ##fluencetype can be "fluence" or "fluencepro" or "none"
 ro.qc.sdk.audio.fluencetype=none
 persist.audio.fluence.voicecall=true
@@ -158,7 +152,7 @@ ro.qc.sdk.sensors.gestures=true
 ro.qc.sdk.gestures.camera=false
 ro.qc.sdk.camera.facialproc=false
 # system prop for NFC DT
-ro.nfc.port=I2C
+#ro.nfc.port=I2C
 #property to enable user to access Google WFD settings.
 persist.debug.wfd.enable=1
 #property to choose between virtual/external wfd display

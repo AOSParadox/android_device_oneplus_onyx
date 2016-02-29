@@ -244,6 +244,10 @@ on post-fs
     chmod 0644 /sys/class/leds/blue/blink
     chmod 0644 /sys/class/leds/green/blink
 
+    # Torch
+    chown system camera /sys/class/leds/led:flash_torch/brightness
+    chmod 0660 /sys/class/leds/led:flash_torch/brightness
+
     # Tri-state keys
     chown root system /proc/tri-state-key/keyCode_top
     chown root system /proc/tri-state-key/keyCode_middle
@@ -606,17 +610,6 @@ service charger /sbin/healthd -c
     class charger
     critical
     seclabel u:r:healthd:s0
-
-service hvdcp /system/bin/hvdcp
-    class core
-    user root
-    disabled
-
-on property:persist.usb.hvdcp.detect=true
-    start hvdcp
-
-on property:persist.usb.hvdcp.detect=false
-    stop hvdcp
 
 service qbcharger /charger -m 1
     disabled

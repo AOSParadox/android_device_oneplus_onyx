@@ -55,8 +55,8 @@ PRODUCT_PACKAGES += \
     dtbToolonyx
 
 # Find7Parts
-PRODUCT_PACKAGES += \
-    Find7Parts
+#PRODUCT_PACKAGES += \
+#    Find7Parts
 
 # GPS
 PRODUCT_PACKAGES += \

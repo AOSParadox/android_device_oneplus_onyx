@@ -29,7 +29,7 @@ TARGET_OTA_ASSERT_DEVICE := onyx,E1003,ONE
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := device/oneplus/onyx/mkbootimg.mk
 KERNEL_DEFCONFIG := cm_onyx_defconfig
-BOARD_KERNEL_CMDLINE := androidboot.hardware=onyx user_debug=23 msm_rtb.filter=0x3b7 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1 androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := androidboot.hardware=onyx user_debug=23 msm_rtb.filter=0x3b7 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
 BOARD_RAMDISK_OFFSET := 0x01000000
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 TARGET_USE_CM_RAMDISK := true

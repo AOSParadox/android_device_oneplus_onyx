@@ -110,6 +110,9 @@ TARGET_PROVIDES_LIBLIGHT := true
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := false
 
+# RIL
+BOARD_RIL_CLASS += ../../../device/oneplus/onyx/ril
+
 # Recovery
 TARGET_RECOVERY_FSTAB := device/oneplus/onyx/ramdisk/fstab.onyx
 

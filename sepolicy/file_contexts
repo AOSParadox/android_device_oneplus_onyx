@@ -11,7 +11,6 @@
 /data/cam_socket2                                       u:object_r:camera_socket:s0
 /data/fdAlbum                                           u:object_r:camera_data_file:s0
 
-
 # Old slim_ap executable
 /system/vendor/bin/slim_ap_daemon                       u:object_r:location_exec:s0
 
@@ -22,3 +21,5 @@
 # Backlight
 /sys/class/leds/lcd-backlight/brightness                u:object_r:touchscreen_file:s0
 
+# Thermal-engine
+/system/bin/thermal-engine                              u:object_r:thermal-engine_exec:s0

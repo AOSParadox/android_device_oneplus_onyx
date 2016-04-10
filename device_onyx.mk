@@ -58,10 +58,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     dtbToolonyx
 
-# Find7Parts
-#PRODUCT_PACKAGES += \
-#    Find7Parts
-
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8974
@@ -78,6 +74,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     keystore.msm8974 \
     keystore.qcom
+
+# KeyHandler
+PRODUCT_PACKAGES += \
+    com.paradox.keyhandler
 
 # Permissions
 PRODUCT_COPY_FILES += \

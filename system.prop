@@ -38,7 +38,6 @@ ro.qti.sensors.vmd=false
 ro.qti.sensors.vmd=true
 ro.sf.lcd_density=480
 ro.telephony.ril.config=simactivation
-ro.telephony.ril_class=OnePlusRIL
 ro.vendor.extension_library=libqti-perfd-client.so
 wifi.interface=wlan0
 wifi.supplicant_scan_interval=15

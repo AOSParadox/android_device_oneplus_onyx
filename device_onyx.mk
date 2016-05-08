@@ -85,7 +85,7 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    power.qcom
+    power.onyx
 
 # USB
 PRODUCT_PACKAGES += \

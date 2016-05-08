@@ -97,7 +97,6 @@ TARGET_UNIFIED_DEVICE := true
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := false
 

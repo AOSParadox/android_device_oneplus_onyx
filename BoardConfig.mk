@@ -28,7 +28,7 @@ TARGET_OTA_ASSERT_DEVICE := onyx,E1003,ONE
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := device/oneplus/onyx/mkbootimg.mk
-KERNEL_DEFCONFIG := cm_onyx_defconfig
+KERNEL_DEFCONFIG := onyx_defconfig
 BOARD_KERNEL_CMDLINE := androidboot.hardware=onyx user_debug=23 msm_rtb.filter=0x3b7 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
 BOARD_RAMDISK_OFFSET := 0x01000000
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
@@ -86,18 +86,8 @@ TARGET_USERIMAGES_USE_F2FS := true
 # Workaround for factory issue
 BOARD_VOLD_CRYPTFS_MIGRATE := true
 
-# Flags
-COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
-COMMON_GLOBAL_CPPFLAGS += -DNO_SECURE_DISCARD
-
 # FM
 TARGET_QCOM_NO_FM_FIRMWARE := true
-
-# Fonts
-EXTENDED_FONT_FOOTPRINT := true
-
-# Graphics
-TARGET_USE_COMPAT_GRALLOC_PERFORM := true
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
@@ -136,10 +126,8 @@ TARGET_USES_QCOM_WCNSS_QMI := true
 TARGET_PROVIDES_WCNSS_QMI := true
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
-WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wlan.ko"
-WIFI_DRIVER_MODULE_NAME          := "wlan"
+WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
+WIFI_DRIVER_MODULE_NAME := "wlan"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-
-TARGET_LDPRELOAD := libNimsWrap.so
 
 -include vendor/oneplus/onyx/BoardConfigVendor.mk

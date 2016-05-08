@@ -42,6 +42,13 @@ on early-boot
 
 on boot
 
+    # Set light thermal restrictions while optimizing apps
+    # [throttle_freq, throttle_temp, unthrottle_temp]
+    write /sys/kernel/msm_thermal/zone0 "1728000 45 43"
+    write /sys/kernel/msm_thermal/zone1 "1574400 50 47"
+    write /sys/kernel/msm_thermal/zone2 "1267200 55 53"
+    write /sys/kernel/msm_thermal/enabled 1
+
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
@@ -350,9 +357,7 @@ on charger
     write /sys/module/msm_pm/modes/cpu2/power_collapse/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu3/power_collapse/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu0/power_collapse/idle_enabled 1
-    write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "conservative"
-    write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/devices/system/cpu/cpu1/online 0
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
@@ -400,6 +405,17 @@ on property:init.svc.bootanim=stopped
     write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 100000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_slack -1
+
+    write /sys/kernel/msm_thermal/enabled 0
+    write /sys/kernel/msm_thermal/zone0 "1728000 39 38"
+    write /sys/kernel/msm_thermal/zone1 "1574400 42 40"
+    write /sys/kernel/msm_thermal/zone2 "1497600 45 43"
+    write /sys/kernel/msm_thermal/zone3 "1267200 49 46"
+    write /sys/kernel/msm_thermal/zone4 "1190400 53 50"
+    write /sys/kernel/msm_thermal/zone5 "1036800 56 54"
+    write /sys/kernel/msm_thermal/zone6 "960000 62 60"
+    write /sys/kernel/msm_thermal/sampling_ms 8000
+    write /sys/kernel/msm_thermal/enabled 1
 
     write /sys/module/cpu_boost/parameters/boost_ms 20
     write /sys/module/cpu_boost/parameters/sync_threshold 1728000

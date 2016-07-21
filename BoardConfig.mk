@@ -1,91 +1,70 @@
-# config.mk
-#
-# Product-specific compile-time definitions.
-#
+# inherit CodeAurora MSM8974 Board Config
+-include device/qcom/msm8974/BoardConfig.mk
 
-TARGET_ARCH := arm
+# Asserts
+TARGET_OTA_ASSERT_DEVICE := onyx,A0001
 
-# Currently unused, but may want to move some things into platform later
-TARGET_KERNEL_ARCH := arm
-
--include $(QCPATH)/common/msm8974/BoardConfigVendor.mk
-include device/qcom/common/BoardConfigCommon.mk
-
+# Include
 TARGET_SPECIFIC_HEADER_PATH := device/oneplus/onyx/include
 
-# RIL
-BOARD_PROVIDES_LIBRIL := true
+# Bluetooth
+BLUETOOTH_HCI_USE_MCT := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oneplus/onyx
 
-#TODO: Fix-me: Setting TARGET_HAVE_HDMI_OUT to false
-# to get rid of compilation error.
-TARGET_HAVE_HDMI_OUT := false
-TARGET_USES_OVERLAY := true
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-TARGET_NO_BOOTLOADER := true
-TARGET_NO_RADIOIMAGE := true
-TARGET_NO_RPC := true
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_QCOM := true
 
-TARGET_CPU_ABI  := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_VARIANT := krait
-
-TARGET_BOARD_PLATFORM := msm8974
-TARGET_BOOTLOADER_BOARD_NAME := MSM8974
-
-BOARD_KERNEL_BASE        := 0x00000000
-BOARD_KERNEL_PAGESIZE    := 2048
-BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
-BOARD_RAMDISK_OFFSET     := 0x02000000
-TARGET_KERNEL_SOURCE := kernel/oneplus/msm8974
-TARGET_KERNEL_CONFIG := baconx_defconfig
-
-# Enables Adreno RS driver
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-
-TARGET_INIT_VENDOR_LIB := libinit_msm
-
-# Shader cache config options
-# Maximum size of the  GLES Shaders that can be cached for reuse.
-# Increase the size if shaders of size greater than 12KB are used.
-MAX_EGL_CACHE_KEY_SIZE := 12*1024
-
-# Maximum GLES shader cache size for each app to store the compiled shader
-# binaries. Decrease the size if RAM or Flash Storage size is a limitation
-# of the device.
-MAX_EGL_CACHE_SIZE := 2048*1024
-
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
-BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
-
+# Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_SEPARATED_DT := true
 TARGET_CUSTOM_DTBTOOL := dtbToolOnyx
+TARGET_RECOVERY_FSTAB = device/oneplus/onyx/ramdisk/fstab.qcom
+KERNEL_DEFCONFIG := baconx_defconfig
+KERNEL_DIR := kernel/oneplus/msm8974
+TARGET_NO_BOOTLOADER := true
+TARGET_USE_CM_RAMDISK := true
 
+# Audio
+USE_CUSTOM_AUDIO_POLICY := 1
+
+# Display
+USE_OPENGL_RENDERER := true
+
+# Gestures
+TARGET_POWER_GESTURE_FILE := device/oneplus/onyx/power/gestures.c
+TARGET_DRAW_ARROW_LEFT_NODE := "/proc/touchpanel/music_enable"
+TARGET_DRAW_O_NODE := "/proc/touchpanel/camera_enable"
+TARGET_DRAW_V_NODE := "/proc/touchpanel/flashlight_enable"
+TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
+
+# RIL
+BOARD_PROVIDES_LIBRIL := true
+BOARD_RIL_CLASS += ../../../device/oneplus/onyx/ril
+
+# Flashlight
+COMMON_GLOBAL_CPPFLAGS += -DLEGACY_FLASHLIGHT_FIX
+
+# Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE     := 16777216
 BOARD_CACHEIMAGE_PARTITION_SIZE    := 536870912
 BOARD_PERSISTIMAGE_PARTITION_SIZE  := 33554432
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
 BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 2147483648
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 13271448576
-
-TARGET_OTA_ASSERT_DEVICE := onyx,A0001
-
-TARGET_USES_ION := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 # FM
 TARGET_QCOM_NO_FM_FIRMWARE := true
 
-TARGET_HW_DISK_ENCRYPTION := false
+# Enable dex pre-opt to speed up initial boot
+ifeq ($(HOST_OS),linux)
+      WITH_DEXPREOPT := true
+endif
 
-# Workaround framework bluetooth dependency
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_QCOM := true
-BLUETOOTH_HCI_USE_MCT := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oneplus/onyx
+# Sepolicy
+BOARD_SEPOLICY_DIRS += \
+     device/oneplus/onyx/sepolicy
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
@@ -97,35 +76,3 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-
-USE_OPENGL_RENDERER := true
-# Enable dex pre-opt to speed up initial boot
-ifeq ($(HOST_OS),linux)
-      WITH_DEXPREOPT := true
-endif
-
-TARGET_RECOVERY_FSTAB = device/oneplus/onyx/rootdir/etc/fstab.qcom
-
-USE_CUSTOM_AUDIO_POLICY := 1
-
-BOARD_SEPOLICY_DIRS += \
-     device/oneplus/onyx/sepolicy
-
-TARGET_POWER_GESTURE_FILE := device/oneplus/onyx/power/gestures.c
-TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
-TARGET_DRAW_V_NODE := "/proc/touchpanel/flashlight_enable"
-TARGET_DRAW_O_NODE := "/proc/touchpanel/camera_enable"
-TARGET_DRAW_ARROW_LEFT_NODE := "/proc/touchpanel/music_enable"
-
-USE_OPENGL_RENDERER := true
-
-FEATURE_QCRIL_UIM_SAP_SERVER_MODE := true
-
-# Control flag between KM versions
-TARGET_HW_KEYMASTER_V03 := true
-
-# RIL
-BOARD_RIL_CLASS += ../../../device/oneplus/onyx/ril
-
-# Flashlight Fix
-COMMON_GLOBAL_CPPFLAGS += -DLEGACY_FLASHLIGHT_FIX

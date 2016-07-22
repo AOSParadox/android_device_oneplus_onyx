@@ -1,4 +1,3 @@
-
 #
 # Copyright (C) 2016 The AOSParadox Project
 # Copyright (C) 2016 Paranoid Android
@@ -15,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+# Call the proprietary setup
+$(call inherit-product-if-exists, vendor/oneplus/onyx/onyx-vendor.mk)
 
 # CAF Branch
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -24,7 +25,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/oneplus/onyx/ramdisk,root)
 
-# Prebuilt
+# Prebuilts
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/oneplus/onyx/prebuilt/system,system)
 
@@ -42,8 +43,23 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # CodeAurora MSM9874 Device Tree
 $(call inherit-product, device/qcom/msm8974/msm8974.mk)
 
-$(call inherit-product, device/oneplus/onyx/common.mk)
-$(call inherit-product, vendor/oneplus/onyx/onyx-vendor.mk)
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8974
+
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm8974
+
+# Keystore
+PRODUCT_PACKAGES += \
+    keystore.msm8974 \
+    keystore.qcom
+
+# Power
+PRODUCT_PACKAGES += \
+    power.msm8974 \
+    power.qcom
 
 # WiFi
 PRODUCT_PACKAGES += \
@@ -65,3 +81,6 @@ PRODUCT_PACKAGES += \
 # Doze mode
 PRODUCT_PACKAGES += \
     OneplusDoze
+
+# Call the proprietary setup
+$(call inherit-product-if-exists, vendor/oneplus/onyx/onyx-vendor.mk)

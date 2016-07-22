@@ -29,6 +29,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/oneplus/onyx/prebuilt/system,system)
 
+# Dalvik/HWUI
+$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
+$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/oneplus/onyx/overlay
 PRODUCT_PACKAGE_OVERLAYS += device/oneplus/onyx/overlay

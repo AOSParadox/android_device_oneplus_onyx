@@ -18,11 +18,11 @@
 # inherit CodeAurora MSM8974 Board Config
 -include device/qcom/msm8974/BoardConfig.mk
 
-# Asserts
-TARGET_OTA_ASSERT_DEVICE := onyx,A0001
-
 # Include
 TARGET_SPECIFIC_HEADER_PATH := device/oneplus/onyx/include
+
+# Asserts
+TARGET_OTA_ASSERT_DEVICE := onyx,A0001
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -44,9 +44,6 @@ USE_CUSTOM_AUDIO_POLICY := 1
 # Bluetooth
 BLUETOOTH_HCI_USE_MCT := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oneplus/onyx
-
-# Bluetooth
-BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 
 # Dex-opt
@@ -54,9 +51,6 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 ifeq ($(HOST_OS),linux)
       WITH_DEXPREOPT := true
 endif
-
-# Display
-USE_OPENGL_RENDERER := true
 
 # FM
 TARGET_QCOM_NO_FM_FIRMWARE := true
@@ -76,6 +70,7 @@ BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive # Selinux permissive for bringup
 BOARD_KERNEL_SEPARATED_DT := true
 TARGET_CUSTOM_DTBTOOL := dtbToolOnyx
 KERNEL_DEFCONFIG := baconx_defconfig
@@ -101,18 +96,21 @@ BOARD_PROVIDES_LIBRIL := true
 BOARD_RIL_CLASS += ../../../device/oneplus/onyx/ril
 
 # Sepolicy
-BOARD_SEPOLICY_DIRS += \
-     device/oneplus/onyx/sepolicy
+include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += device/oneplus/onyx/sepolicy
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
-BOARD_WLAN_DEVICE := qcwcn
+BOARD_HAS_QCOM_WLAN_SDK := true
 BOARD_HOSTAPD_DRIVER := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
+BOARD_WLAN_DEVICE := qcwcn
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
+WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
+WIFI_DRIVER_MODULE_NAME := "wlan"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 -include vendor/oneplus/onyx/BoardConfigVendor.mk

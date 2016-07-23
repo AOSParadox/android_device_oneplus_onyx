@@ -22,6 +22,7 @@ PRODUCT_NAME := full_onyx
 PRODUCT_DEVICE := onyx
 PRODUCT_MANUFACTURER := OnePlus
 PRODUCT_MODEL := OnePlus X
+PRODUCT_BRAND := OnePlus
 
 PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 

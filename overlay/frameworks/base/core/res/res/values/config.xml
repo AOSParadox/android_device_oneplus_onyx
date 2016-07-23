@@ -359,8 +359,8 @@
     <!-- Our modem doesn't support this query yet -->
     <string name="config_radio_access_family">GPRS|EDGE|UMTS|HSDPA|HSUPA|HSPA|LTE|HSPAP|GSM|TD_SCDMA|WCDMA|LTE_CA</string>
 
-    <integer name="config_buttonBrightnessSettingDefault">0</integer>
-
+<!--    <integer name="config_buttonBrightnessSettingDefault">0</integer>
+-->
     <!-- Hardware 'face' keys present on the device, stored as a bit field.
          This integer should equal the sum of the corresponding value for each
          of the following keys present:
@@ -392,10 +392,10 @@
     <bool name="config_enableKeyHandler">true</bool>
 
     <!-- Whether device has physical tri state switch -->
-    <bool name="config_hasAlertSlider">true</bool>
-
+<!--    <bool name="config_hasAlertSlider">true</bool>
+-->
     <!-- Alert slider proc nodes paths. -->
-    <string name="alert_slider_state_path">/sys/class/switch/tri-state-key/state</string>
+<!--    <string name="alert_slider_state_path">/sys/class/switch/tri-state-key/state</string>
     <string name="alert_slider_uevent_match_path">DEVPATH=/devices/virtual/switch/tri-state-key</string>
-
+-->
 </resources>

@@ -390,7 +390,4 @@
 
     <!-- Whether to to intercept inputs on screen off. -->
     <bool name="config_enableKeyHandler">true</bool>
-
-    <!-- Whether device has physical tri state switch -->
-    <bool name="config_hasAlertSlider">true</bool>
 </resources>
